@@ -6,7 +6,7 @@ yum update –y
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 
-yum install -y awslogs amazon-efs-utils jenkins ntp java-1.8.0-openjdk-devel
+yum install -y awslogs amazon-efs-utils jenkins ntp java-1.8.0-openjdk-devel git
 
 mkdir -p /home/jenkins
 

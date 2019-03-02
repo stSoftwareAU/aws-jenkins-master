@@ -2,11 +2,14 @@
 set -e
 
 sed -i -e 's/#root:.*/root: support@stsoftware.com.au/g' /etc/aliases
-yum update –y
+
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 
-yum install -y awslogs amazon-efs-utils jenkins ntp java-1.8.0-openjdk-devel git
+yum update –y
+amazon-linux-extras enable corretto8
+
+yum install -y java-1.8.0-amazon-corretto awslogs amazon-efs-utils jenkins ntp git
 
 mkdir -p /home/jenkins
 

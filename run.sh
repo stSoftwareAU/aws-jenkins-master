@@ -9,7 +9,7 @@ rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 yum update –y
 amazon-linux-extras enable corretto8
 
-yum install -y java-1.8.0-amazon-corretto awslogs amazon-efs-utils jenkins ntp git
+yum install -y java-1.8.0-amazon-corretto awslogs amazon-efs-utils jenkins ntp git jq
 
 mkdir -p /home/jenkins
 

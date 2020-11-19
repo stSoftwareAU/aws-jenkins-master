@@ -3,8 +3,11 @@ set -e
 
 sed -i -e 's/#root:.*/root: support@stsoftware.com.au/g' /etc/aliases
 
-wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
-rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+# wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
+# rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
 
 yum update –y
 amazon-linux-extras enable corretto8

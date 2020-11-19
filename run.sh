@@ -18,7 +18,7 @@ mkdir -p /home/jenkins
 
 mount -t efs fs-cb20bcf2:/ /home/jenkins
 
-chown -R jenkins:jenkins /home/jenkins
+chown -R -v jenkins:jenkins /home/jenkins
 sed --in-place -E "s/( *JENKINS_HOME *=)(.*)/\1\/home\/jenkins/" /etc/sysconfig/jenkins
 
 usermod -s /bin/bash -d /home/jenkins jenkins
@@ -34,10 +34,10 @@ echo "state_file = /var/lib/awslogs/agent-state" >> /etc/awslogs/awslogs.conf
 echo "use_gzip_http_content_encoding=true" >> /etc/awslogs/awslogs.conf
 
 echo "" >> /etc/awslogs/awslogs.conf
-echo "[/var/log/messages]" >> /etc/awslogs/awslogs.conf
-echo "log_group_name = tp-php_/var/log/messages" >> /etc/awslogs/awslogs.conf
+echo "[/var/log/cloud-init-output.log]" >> /etc/awslogs/awslogs.conf
+echo "log_group_name = jenkins_master/var/log/cloud-init-output.log" >> /etc/awslogs/awslogs.conf
 echo "datetime_format = %b %d %H:%M:%S" >> /etc/awslogs/awslogs.conf
-echo "file = /var/log/messages" >> /etc/awslogs/awslogs.conf
+echo "file = /var/log/cloud-init-output.log" >> /etc/awslogs/awslogs.conf
 echo "log_stream_name = {instance_id}" >> /etc/awslogs/awslogs.conf
 
 ID=`curl http://169.254.169.254/latest/meta-data/instance-id`

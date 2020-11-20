@@ -18,7 +18,7 @@ mkdir -p /home/jenkins
 
 mount -t efs fs-cb20bcf2:/ /home/jenkins
 
-#chown -R -v jenkins:jenkins /home/jenkins
+chown -R -v jenkins:jenkins /home/jenkins
 sed --in-place -E "s/( *JENKINS_HOME *=)(.*)/\1\/home\/jenkins/" /etc/sysconfig/jenkins
 
 usermod -s /bin/bash -d /home/jenkins jenkins

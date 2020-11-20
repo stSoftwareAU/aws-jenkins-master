@@ -35,13 +35,12 @@ rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 amazon-linux-extras enable corretto8
 yum install -y java-1.8.0-amazon-corretto amazon-efs-utils jenkins ntp git jq
 
-set +e
-adduser -u 777 jenkins
-set -e
+JENKINS_USER_ID=996
+usermod -u ${JENKINS_USER_ID} jenkins
 mkdir -p /home/jenkins
 usermod --home /home/jenkins jenkins
 mount -t efs fs-cb20bcf2:/ /home/jenkins
-chown -R -v jenkins:jenkins /home/jenkins
+#chown -R -v jenkins:jenkins /home/jenkins
 sed --in-place -E "s/( *JENKINS_HOME *=)(.*)/\1\/home\/jenkins/" /etc/sysconfig/jenkins
 
 usermod -s /bin/bash -d /home/jenkins jenkins

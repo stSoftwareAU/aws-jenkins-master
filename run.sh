@@ -69,6 +69,7 @@ retry rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 
 
 amazon-linux-extras enable corretto8
+amazon-linux-extras install -y epel
 yum install -y java-1.8.0-amazon-corretto amazon-efs-utils jenkins ntp git jq
 
 JENKINS_USER_ID=996

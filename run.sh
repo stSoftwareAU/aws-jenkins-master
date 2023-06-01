@@ -66,6 +66,8 @@ sed -i -e 's/#root:.*/root: support@stsoftware.com.au/g' /etc/aliases
 # rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 retry wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 retry rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+retry rpm --import https://pkg.jenkins.io/redhat/jenkins.io-2023.key
+retry rpm --import https://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 
 
 amazon-linux-extras enable corretto8

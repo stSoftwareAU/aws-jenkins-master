@@ -73,7 +73,12 @@ retry rpm --import https://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 amazon-linux-extras enable corretto8
 amazon-linux-extras install -y epel
 yum install -y java-1.8.0-amazon-corretto amazon-efs-utils ntp git jq
-yum install -y jenkins-2.319.3-1.1
+
+#yum install -y jenkins-2.319.3-1.1
+
+# alternative way to download jenkins and install it as the Jenkins main archive site got problem
+wget https://archives.jenkins-ci.org/redhat-stable/jenkins-2.319.3-1.1.noarch.rpm
+yum localinstall jenkins-2.319.3-1.1.noarch.rpm
 
 JENKINS_USER_ID=996
 usermod -u ${JENKINS_USER_ID} jenkins
